@@ -45,7 +45,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'widget_tweaks',
-    'pdf2image',
     'main.apps.MainConfig',
     'register.apps.RegisterConfig',
 
