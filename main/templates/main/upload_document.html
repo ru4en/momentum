@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+<div class="text-center jumbotron">
+    <h1>Upload New Document</h1>
+</div>
+<div class="col d-flex justify-content-center"> 
+    <div class="card bg-dark text-white p-5 m-5" style="position:initial; top: 5rem; width: 30rem">
+        <form method="POST" class="form-group" enctype="multipart/form-data">
+
+            {% csrf_token %}
+            {{form|crispy}}
+            <button class="mt-1 w-100 bottom-0 btn btn-primary" type="submit" name="save" class="btn btn-success">Upload</button>
+
+        </form>      
+    </div>
+</div>
+
+
+{% endblock %}

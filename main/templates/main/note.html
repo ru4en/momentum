@@ -1,0 +1,73 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<div class="text-center jumbotron">
+    <h1>Notes</h1>
+
+</div>
+{% if user.is_authenticated %}   
+<body onload=onload()>
+</body>
+
+
+<div class="container-fluid main splitter text-center">
+    <div id="sidebar" class="sidebar">
+        <button class="btn w-100 mb-1 btn-primary" onclick="location.href='/note/newnote/'">Create New Note</button>
+        {%for note in all_notes %}
+        <button class="btn w-100 mb-1 btn-success" onclick="location.href='/note/{{note.id}}/'" > {{note.title}}</button>
+        {%endfor%}
+    </div>
+    <button id="separator" class="btn btn-primary" type="button" ondblclick=collapse() data-target="#sidebar">
+
+    <svg id="menu-visible" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
+      </svg>
+
+    <svg id="menu-invisible" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-up" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
+    </svg>
+</button>
+
+    <div id="note" class="note card bg-dark">
+        <form class="" method="POST" class="form-group">
+            <div>
+                    {% csrf_token %}
+                    <input class="note-title bg-dark" placeholder="Note Name..."  type="text" value="{{note.title}}" name="title">
+                    <button type="button" class="btn-close btn-close-white" type="submit" aria-label="Close"></button>
+                    <p class="text-muted text-end me-3">Created by {{note.author}}.</p>
+                    <hr class="line3" width="90%">
+                    <textarea style="overflow: hidden" class="note-content bg-dark w-100" placeholder="Note Content..." type="text" name="content">{{note.content}}</textarea>
+                    <button class="mt-1 w-100 bottom-0 btn btn-primary" type="submit" name="save" class="btn btn-success">Update note</button>
+                </div>
+            </form>
+        </div>
+    <div class="clearfix visible-sm"></div>
+</div>
+</div>
+    </div>
+    <br>
+
+
+<script>
+    const tx = document.getElementsByTagName("textarea");
+    for (let i = 0; i < tx.length; i++) {
+    tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;overflow-y:hidden;");
+    tx[i].addEventListener("input", OnInput, false);
+    }
+
+    function OnInput() {
+    this.style.height = "auto";
+    this.style.height = (this.scrollHeight) + "px";
+    }
+    
+</script>
+
+
+
+
+
+{% else %}
+
+{% endif %}
+{% endblock %}

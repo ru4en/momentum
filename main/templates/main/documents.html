@@ -1,0 +1,37 @@
+{% extends 'main/base.html' %}
+{% block content %}
+<div class="text-center jumbotron">
+    <h1>Documents</h1>
+
+</div>
+{% if user.is_authenticated %}   
+<div class="row row-cols-1 m-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-12 g-3">
+    <div class="doc-col col">
+      <button class="dock-card  card bg-dark text-light w-100 align-items-center" onclick="location.href='/documents/upload/'">
+        <h5 class="card-title p-4">Add New Document</h5>
+        <svg xmlns="http://www.w3.org/2000/svg" width="200px" fill="currentColor" class="bi bi-plus-circle " viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+        </svg>
+      </button>
+      </div>
+  {% for document in all_documents %}
+  <div class="doc-col col">
+      <button class="dock-card border-0 card bg-dark text-light w-100" onclick="location.href='../{{document.pdf_file}}'">
+        <img class="card-img-top p-3" src="https://image.flaticon.com/icons/png/512/678/678370.png" alt="ALT-TEXT">
+        <div class="card-body overflow-hidden w-100">{{document.author}}
+          <h5 class="card-title text-start">{{document.title}}</h5>
+          <p class="card-text text-start">{{document.cartegory}}</p>
+          <p class="card-text text-start">{{document.description}}</p>
+          <p class="small position-absolute bottom-0 start-0 p-3">passport</p>
+          <p class="small position-absolute bottom-0 end-0 p-3">{{document.expiry_date}}</p>
+        </div>
+      </button>
+    </div>
+  {% endfor %}
+</div>
+</div>
+{% else %}
+
+{% endif %}
+{% endblock %}
