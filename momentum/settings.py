@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'main.apps.MainConfig',
     'register.apps.RegisterConfig',
+    'whitenoise.runserver_nostatic',
+    'django.contrib.staticfiles',
 
 ]
 
@@ -58,6 +60,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
 ]
 
 ROOT_URLCONF = 'momentum.urls'
@@ -79,6 +84,11 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'momentum.wsgi.application'
+
+WHITENOISE_USE_FINDERS = True
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 
 
 # Database
