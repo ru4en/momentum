@@ -1,0 +1,180 @@
+*{
+    outline: none;
+}
+
+.body {
+    min-height: 750px;
+}
+
+@media (max-width: 600px) {
+
+    #sidebar{
+        min-width: 100%;
+    }
+
+    .splitter {
+        display: block;
+    }    
+
+    #separator {
+        margin: 5px 0;
+        text-align: center;
+        border: 0;
+        border-radius: 3rem;
+        width: 3rem;
+        height: 3rem;
+    }
+
+    #menu-visible {
+        display:none;
+    }
+
+        
+    .pdf-thumbnail {
+        overflow: hidden;
+        height: fit-content;
+        object-fit: fill;
+        margin: 0;
+    }
+}
+
+
+@media (min-width: 600px) {
+
+    .menu-bar-button {
+        border-radius: 50px;
+        width: 50px;
+        height: 50px;
+        margin: 70px 20px;
+        border: 0;
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+    }
+
+    .main {
+        display: grid;
+        padding: 3px;
+        grid-gap: 3px;
+        
+        grid-template: 
+        "nav head" min-content
+        "nav main" 1fr
+            / min-content 1fr;
+    }
+
+    #separator {
+        cursor: col-resize;
+        background-color: rgb(117, 117, 117);
+        background-position: center;
+        min-height: 200px;
+        max-height: 100000px;
+        border-radius: 5px;
+        padding: 3px;
+    
+        /* Prevent the browser's built-in drag from interfering */
+        -moz-user-select: none;
+        -ms-user-select: none;
+        transition-duration: .3s;
+        user-select: none;
+        border: none;
+    }
+
+    #menu-visible, #menu-invisible {
+        width: 0;
+    }
+
+    #separator:hover {
+        padding: 4px;
+        transition-duration: .3s;
+        background-color: rgb(80, 80, 80);
+    }
+    
+    
+
+    #sidebar {
+        background-color: #dde;
+        width: 20%;
+        height: 100%;
+        min-width: 10px;
+        overflow: auto;
+        width: 25vw;
+        min-width: 15vw;
+        max-width: 50vw;
+    }
+    
+    #note {
+        grid-area: main;
+        background-color: #eee;
+        float: right;
+        right: 0;
+        width: 100vw;
+        min-width: 50vw;
+    }
+
+    .splitter {
+        width: 100%;
+        display: flex;
+    }
+    
+
+    
+}
+
+.note {
+    border-radius: 54px;
+}
+
+  .note-title {
+      height: 50px;
+      width: calc(100% - 1.5em);
+      padding: 40px;
+      font-size: 30px;
+      border: none;
+      color: #fff;
+  }
+
+  .note-content {
+    padding: 25px;
+    border: none;
+    color: #fff;
+    min-height: 700px;
+}
+
+button {
+    min-height: 40px;
+}
+
+.doc-col {
+    max-width: 35rem;
+}
+
+
+.dock-card {
+    height: 25rem;
+    padding: 0;
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: contain;
+    background-color: #8c8b8b;
+}
+
+.card {
+    border: none;
+}
+
+.pdf-thumbnail {
+    width: 100%;
+    overflow: hidden;
+    object-fit: fill;
+}
+
+.card-text {
+    display: -webkit-box;
+    max-width: 95%;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
