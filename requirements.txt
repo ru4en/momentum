@@ -3,3 +3,4 @@ django-crispy-forms==1.12.0
 django-widget-tweaks==1.4.8
 fontawesome-free==5.15.3
 fontawesomefree==5.15.3
+whitenoise
