@@ -1,0 +1,2 @@
+web: gunicorn momuntum.wsgi:application --log-file -
+
